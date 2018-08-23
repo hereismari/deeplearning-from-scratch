@@ -7,7 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 <meta name="ipynb_website:version" content="0.9.4" />
+=======
+<meta name="ipynb_website:version" content="0.9.3" />
+>>>>>>> 8aee36ac987e4d26ef9228ea46a4644846c1ff4a
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Divvy data exploration project</title>
@@ -21,6 +25,7 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <link rel="stylesheet"
+<<<<<<< HEAD
       href="site_libs/highlightjs/null.min.css"
       type="text/css" />
 
@@ -33,6 +38,11 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
    }, 0);
 }
 </script>
+=======
+      href="site_libs/highlightjs-1.1/textmate.css"
+      type="text/css" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+>>>>>>> 8aee36ac987e4d26ef9228ea46a4644846c1ff4a
 <style type="text/css">
   div.input_prompt {display: none;}
   div.output_html {
@@ -45,6 +55,16 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
     background-color: white;
   }
 </style>
+<<<<<<< HEAD
+=======
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+>>>>>>> 8aee36ac987e4d26ef9228ea46a4644846c1ff4a
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script>
     MathJax.Hub.Config({
