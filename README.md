@@ -110,7 +110,7 @@ below. (For an introduction to git, see
    notebooks does not actually run the code in the notebooks. If you
    would like to run the code prior to generating the webpages, this
    must be done interactively in Jupyter, or from the command line
-   using `jupyter nbconvert --execute`.
+   using `jupyter nbconvert --execute analysis/simple-neural-nets.ipynb --ExecutePreprocessor.kernel_name=myenv`.
 
    All the webpages are created and stored in the "docs"
    directory. This is convenient for git repositories hosted on

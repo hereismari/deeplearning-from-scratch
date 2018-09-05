@@ -1,7 +1,7 @@
 docs/analysis.html
 docs/analysis.tpl
-docs/analysis/Simple Neural Netwoks.html
-docs/analysis/sgd-and-variations.html
+docs/analysis/sgd.html
+docs/analysis/simple-neural-nets.html
 docs/index.html
 docs/index.tpl
 docs/js/docs.js
