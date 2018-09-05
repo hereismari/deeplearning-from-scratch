@@ -1,10 +1,6 @@
 docs/analysis.tpl
 docs/analysis/Simple Neural Netwoks.html
-docs/analysis/first-glance.html
-docs/analysis/seasonal-trends.html
 docs/analysis/sgd-and-variations.html
-docs/analysis/station-map.html
-docs/analysis/time-of-day-trends.html
 docs/index.html
 docs/index.tpl
 docs/js/docs.js

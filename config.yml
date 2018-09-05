@@ -1,24 +1,24 @@
 # The name of the project shown in the navigation bar (it links to the
 # home page).
-name: "Divvy data exploration project"
+name: "Aprendendo Deep Learning"
 
 # Link to the source repository (e.g., on Github, Gitlab).
-repo: "http://github.com/stephenslab/ipynb-website"
+repo: "http://github.com/mari-linhares/deep-python-scratch"
 
 # Footer added to the bottom of some webpages.
-footer: "&copy; 2017 Peter Carbonetto &amp; Gao Wang"
+footer: "&copy; 2018 Marianne Linhares"
 
 # When set to True, populate the footer of each notebook with the git
 # commit id (SHA1) and commit modification date.
-add_commit_info: False
+add_commit_info: True
 
 # These subdirectories contain Jupyter notebooks that will be rendered
 # into webpages.
-include_dir: ["analysis", "setup", "license", "notes", "protected"]
+include_dir: ["analysis"]
 
 # Do not add links in the navigation bar for the Jupyter notebooks in
 # these subdirectories.
-hide_navbar: ["analysis"]
+hide_navbar: []
 
 # Any Jupyter notebooks listed here will not be rendered into webpages
 # (e.g., "analysis/temp.ipynb").
@@ -31,7 +31,7 @@ homepage: "analysis/index.ipynb"
 
 # The name of the homepage link shown in the navigation bar.
 # Set to NULL to hide it
-homepage_label: "Overview"
+homepage_label: "Home"
 
 # The name of the link to the source repository. It is shown in the
 # top-right corner of the navigation bar. Set it to NULL to hide it.
@@ -41,7 +41,7 @@ source_label: "source"
 
 # Bootstrap theme. Current supported themes are "cerulean", "flatly"
 # and "readable"; see the docs/css directory.
-theme: "readable"
+theme: "cerulean"
 
 # Font used to show all code and text in the Jupyter notebooks (e.g.,
 # "Droid Sans"). Set to NULL to inherit the font used by the Bootsrap
@@ -50,7 +50,7 @@ font: NULL
 
 # Set to True to add a table-of-contents (TOC) to the left-hand side
 # of each of the Jupyter notebook webpages; otherwise, set to False.
-notebook_toc: False
+notebook_toc: True
 
 # Set this variable to enable auto-commit.
 # release_message: "Build website with jnbinder."
