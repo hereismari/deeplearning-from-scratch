@@ -1,27 +1,15 @@
-# ipynb website: Simple data science website using Jupyter notebooks
+# Deep Python Scratch :computer::thinking::snake:
 
-This repository is an adaptable framework for publishing websites from
-[Jupyter interactive notebooks](https://jupyter.org).
+Repositório com código para o tutorial Aprendendo Deep Learning.
 
-*Please copy and adapt this repository for your own project.*
 
-View the demo project website
-[here](https://stephenslab.github.io/ipynb-website).
+A repository with neural networks and deep learning related concepts fully implemented in Jupyter notebooks using a Python 3 kernel. The code here available was developed only for learning and teaching purposes. But is not in the best shape and structure for real use. Also, all comments and instructions are in Portuguese mainly because there's already a lot of good content in English.
 
-If you find any problems, or would like to suggest new features,
-please open an
-[Issue](https://github.com/stephenslab/ipynb-website/issues). We also
-encourage community contributions, e.g., by forking the repository,
-making your suggested changes, and issuing a pull request.
+Contribuições são muito bem vindas!
 
-## License
+## Rodando localmente
 
-Copyright (c) 2017, Peter Carbonetto & Gao Wang.
-
-All source code and software in this repository are made available
-under the terms of the [MIT license](https://opensource.org/licenses/MIT).
-
-## Quick Start
+Você pode rodar os notebooks separadamente na [maneira convencional de um jupyter notebook](). Ou ainda servir este site localmente da seguinte forma:
 
 To start your own Jupyter-notebook-based research website, please
 follow these steps.
@@ -169,7 +157,7 @@ below. (For an introduction to git, see
      `sos run release.sos -s force` to re-build all the webpages,
      then commit your changes to the git repository.
 
-## More setup details
+### More setup details
 
 + Whenever you make global changes to the website (e.g., you change
   the Boostrap theme in `config.yml`), use the `-s force` option to force
@@ -222,7 +210,18 @@ below. (For an introduction to git, see
 + For more website customization details, please refer to the comments
   in the [config.yml](config.yml) file.
 
-## Credits
+
+----
+
+A repository with neural networks and deep learning related concepts fully implemented in Jupyter notebooks using a Python 3 kernel. The code here available was developed only for learning and teaching purposes. But is not in the best shape and structure for real use. Also, all comments and instructions are in Portuguese mainly because there's already a lot of good content in English.
+
+
+## Créditos do template utilizado no site
+
+Copyright (c) 2017, Peter Carbonetto & Gao Wang.
+
+All source code and software in this repository are made available
+under the terms of the [MIT license](https://opensource.org/licenses/MIT).
 
 **ipynb website** was developed by:
 
