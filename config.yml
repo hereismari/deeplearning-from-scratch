@@ -37,11 +37,11 @@ homepage_label: "Home"
 # top-right corner of the navigation bar. Set it to NULL to hide it.
 # If this line is removed or commented out, then the default is to 
 # show a Github logo (the "Octocat"). 
-source_label: "source"
+source_label: "Github"
 
 # Bootstrap theme. Current supported themes are "cerulean", "flatly"
 # and "readable"; see the docs/css directory.
-theme: "cerulean"
+theme: "readable"
 
 # Font used to show all code and text in the Jupyter notebooks (e.g.,
 # "Droid Sans"). Set to NULL to inherit the font used by the Bootsrap

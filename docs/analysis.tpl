@@ -1,4 +1,7 @@
+{%- extends 'basic.tpl' -%}
 
+{%- block header -%}
+{{ super() }}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -121,7 +124,7 @@ function sortDataFrame(id, n, dtype) {
 
 <script>
 $( document ).ready(function(){
-            var cfg={'threshold':3,     // depth of toc (number of levels)
+            var cfg={'threshold':{{ nb.get('metadata', {}).get('toc', {}).get('threshold', '3') }},     // depth of toc (number of levels)
              'number_sections': false,
              'toc_cell': false,          // useless here
              'toc_window_display': true, // display the toc window
@@ -233,65 +236,14 @@ body {
       </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Simple-Neural-Networks">Simple Neural Networks<a class="anchor-link" href="#Simple-Neural-Networks">&#182;</a></h2><p>This content is heavily inspired by the <a href="https://github.com/iamtrask/Grokking-Deep-Learning">Chapter 3</a> of the Grokking Deep Learning.</p>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Neural networks can be seen mainly as compicated functions.</p>
-<p>As functions they reiceve an input, make some computation and give something as outputs.</p>
-<p>For Deep Learning these inputs and outputs are mainly tensors, which are basically vectors of arbitrary dimensions and shapes. And the computations involve multiplying inputs by tensors and applying some activation function.</p>
+{%- endblock header -%}
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyFirstNeuralNetwork</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_weights</span> <span class="o">=</span> <span class="n">weights</span>
-    
-    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_input</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_activation_function</span><span class="p">(</span><span class="n">_input</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weights</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">_activation_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">data</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nn</span> <span class="o">=</span> <span class="n">MyFirstNeuralNetwork</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
+{% block footer %}
 <hr>
 &copy; 2018 Marianne Linhares
-<p><small>Exported from <a href="http://github.com/mari-linhares/deep-python-scratch/blob//analysis/Simple Neural Netwoks.ipynb"><code>analysis/Simple Neural Netwoks.ipynb</code></a> committed by Marianne Linhares Monteiro on Wed Sep 5 17:52:10 2018 <a href="http://github.com/mari-linhares/deep-python-scratch/commit/">revision 0, </a> <a href="https://stephenslab.github.io/ipynb-website/notes.html#Note-about-commit-ids"><span class="fa fa-question-circle"></span></a></small></p>
 </div>
 </div>
 </body>
 </html>
+{% endblock %}

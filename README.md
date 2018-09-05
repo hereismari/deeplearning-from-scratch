@@ -122,7 +122,7 @@ below. (For an introduction to git, see
    favorite Web browser.
 
 9. If you would like to upload your new git repository to a git
-   hosting website, do the following:
+   hosting website, do the following:heade
 
    + Create a new empty repository on tour favorite git hosting
      website (e.g., [Github](http://github.com),
