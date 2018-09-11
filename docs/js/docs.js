@@ -1,3 +1,3 @@
-var analysisArray = ['pca', 'intro-neural-nets', 'neural-net']
+var analysisArray = ['pca']
 var analysisDict = {'Depend-ncias-1': 'pca'}
-var analysisArrayMap = {'intro-neural-nets': 'Dependências', 'neural-net': 'Dependências', 'pca': 'Dependências'}
+var analysisArrayMap = {'dae_rmsprop': 'Dependências', 'intro_neural_nets': 'Dependências', 'neural_net': 'Dependências', 'pca': 'Dependências'}

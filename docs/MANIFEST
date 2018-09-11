@@ -1,7 +1,8 @@
 docs/analysis.html
 docs/analysis.tpl
-docs/analysis/intro-neural-nets.html
-docs/analysis/neural-net.html
+docs/analysis/dae_rmsprop.html
+docs/analysis/intro_neural_nets.html
+docs/analysis/neural_net.html
 docs/analysis/pca.html
 docs/index.html
 docs/index.tpl
