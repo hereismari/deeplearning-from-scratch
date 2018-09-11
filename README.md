@@ -1,4 +1,4 @@
-# Deep Python Scratch :computer::thinking::snake:
+# Deep Learning from Scratch :computer::thinking::snake:
 
 A repository with neural networks and deep learning related concepts fully implemented in Python 3 using only numpy. The code here available was developed only for learning and teaching purposes.
 
