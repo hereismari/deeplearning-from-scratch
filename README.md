@@ -1,6 +1,6 @@
 # Deep Learning from Scratch :computer::thinking::snake::brazil:
 
-Repositório com código para o tutorial Aprendendo Deep Learning. Este repositório contém conceitos relacionados com machine learning e deep learning implementados em Jupyter notebooks utilizando Python3. O código é feito para facilitar o ensino e aprendizado e não está no melhor formato para uso prático. Todos os comentrios e instrunções estão em português.
+Repositório com código para o tutorial Aprendendo Deep Learning. Este repositório contém conceitos relacionados com machine learning e deep learning implementados em Jupyter notebooks utilizando Python3. O código é feito para facilitar o ensino e aprendizado. Todos os comentários e instrunções estão em português.
 
 Contribuições são muito bem vindas!
 
