@@ -3,12 +3,9 @@ from models.layers.activations.activation import Activation
 
 
 class Relu(Activation):
-    @staticmethod
-    def forward(data):
+    def __call__(self, data):
         return np.maximum(0, data)
     
-    
-    @staticmethod
-    def backward(data):
-        relu = Relu.forward(data)
+    def backward(self, data):
+        relu = self.__call__(data)
         return (relu > 0) * 1.0

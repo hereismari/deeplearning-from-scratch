@@ -3,11 +3,9 @@ from models.layers.activations.activation import Activation
 
 
 class Tanh(Activation):
-    @staticmethod
-    def forward(data):
+    def __call__(self, data):
         return np.tanh(data)
     
     
-    @staticmethod
-    def backward(data):
-        return 1 - Tanh.forward(data) ** 2
+    def grads(self, data):
+        return 1 - self.__call__(data) ** 2

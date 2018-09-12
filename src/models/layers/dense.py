@@ -27,27 +27,14 @@ class Dense(Layer):
     
 
     def backward(self, grads):
-        d = grads * self.activation.grads(self._current_output_data)
         if self.trainable:
-            self._dW = np.dot(self.current_input_data, d)
-            self._db = np.sum(d, axis=0, keepdims=True)
+            self._dW = np.dot(self.current_input_data.T, grads)
+            self._db = np.sum(grads, axis=0, keepdims=True)
         
             self.W = self.optimize(self.W, self._dW)
             self.W = self.optimize(self.W, self._dW)
 
-        return np.dot(d, self.W.T)
-
-
-    def update_params(self, gradients, learning_rate=0.1):
-        assert len(gradients) == len(self.weights), (len(gradients), len(self.weights))
-        assert len(gradients) == len(self.biases), (len(gradients), len(self.biases))
-        
-        for i, grad in enumerate(gradients[::-1]):
-            assert grad['weights'].shape == self.weights[i].shape
-            self.weights[i] -= learning_rate * grad['weights']
-            assert grad['biases'].shape == self.biases[i].shape
-            self.biases[i] -= learning_rate * grad['biases']
-
+        return np.dot(grads, self.W.T)
     
     def run_batch(self, batch):
         self._current_batch = [batch]
@@ -58,17 +45,6 @@ class Dense(Layer):
         
         self._current_batch = self._current_batch[::-1]
         return output
-
-    def update_params(self, gradients, learning_rate=0.1):
-        assert len(gradients) == len(self.weights), (len(gradients), len(self.weights))
-        assert len(gradients) == len(self.biases), (len(gradients), len(self.biases))
-        
-        for i, grad in enumerate(gradients[::-1]):
-            assert grad['weights'].shape == self.weights[i].shape
-            self.weights[i] -= learning_rate * grad['weights']
-            assert grad['biases'].shape == self.biases[i].shape
-            self.biases[i] -= learning_rate * grad['biases']
-
     
     def run_batch(self, batch):
         self._current_batch = [batch]
