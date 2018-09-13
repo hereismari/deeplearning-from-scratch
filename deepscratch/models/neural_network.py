@@ -1,9 +1,12 @@
-from models.optimizers.sgd import SGD
-
 class NeuralNetwork(object):
-    def __init__(self, layers=[], optimizer=SGD):
+    def __init__(self, layers=[]):
         self.layers=layers
+        self.optimizer = None
+
+    def compiler(self, optimizer):
         self.optimizer = optimizer
+        for layer in self.layers:
+            layer.optimizer = self.optimizer.optimize
 
     def add(self, layer):
         self.layers.add(layer)

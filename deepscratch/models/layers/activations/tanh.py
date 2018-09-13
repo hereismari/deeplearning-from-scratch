@@ -1,5 +1,5 @@
 import numpy as np
-from models.layers.activations.activation import Activation
+from deepscratch.models.layers.activations.activation import Activation
 
 
 class Tanh(Activation):

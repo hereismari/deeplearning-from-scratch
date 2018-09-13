@@ -7,5 +7,5 @@ class SGD(object):
     
 
     def optimize(self, data, grads):
-        assert grads.shape == data.shape, grads.shape, data.shape
+        assert grads.shape == data.shape, (grads.shape, data.shape)
         return data -1 * lr * grads

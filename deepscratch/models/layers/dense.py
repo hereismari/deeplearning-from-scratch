@@ -1,6 +1,6 @@
 import numpy as np
-from models.layers.layer import Layer
-from models.layers.activations.activation import Activation
+from deepscratch.models.layers.layer import Layer
+from deepscratch.models.layers.activation import Activation
 
 class Dense(Layer):
     def __init__(self, n_units, input_shape=None, activation=Activation, trainable=True):
@@ -32,7 +32,7 @@ class Dense(Layer):
             self._db = np.sum(grads, axis=0, keepdims=True)
         
             self.W = self.optimize(self.W, self._dW)
-            self.W = self.optimize(self.W, self._dW)
+            self.b = self.optimize(self.b, self._db)
 
         return np.dot(grads, self.W.T)
     

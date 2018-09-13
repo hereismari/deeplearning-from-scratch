@@ -1,11 +1,11 @@
 import numpy as np
 
-from models.layers.layer import Layer
+from deepscratch.models.layers.layer import Layer
 
-from models.layers.activations.activation import Activation as Linear
-from models.layers.activations.relu import Relu
-from models.layers.activations.sigmoid import Sigmoid
-from models.layers.activations.tanh import Tanh
+from deepscratch.models.layers.activations.activation import Activation as Linear
+from deepscratch.models.layers.activations.relu import Relu
+from deepscratch.models.layers.activations.sigmoid import Sigmoid
+from deepscratch.models.layers.activations.tanh import Tanh
 
 
 class Activation(Layer):
