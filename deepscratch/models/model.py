@@ -1,10 +1,8 @@
-from models.optimizers.sgd import SGD
-
 class Model(object):
     def __init__(self):
         self.optimizer = None
     
-    def compile(self, optimizer):
+    def initialize(self, **kwargs):
         pass
     
     def forward(self, data):

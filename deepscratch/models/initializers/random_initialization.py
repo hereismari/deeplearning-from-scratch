@@ -1,5 +1,5 @@
 import numpy as np
-from models.layers.initializations.initialization import Initialization
+from deepscratch.models.initializers.initialization import Initialization
 
 
 class RandomInitialization(object):

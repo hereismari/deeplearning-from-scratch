@@ -1,14 +1,18 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+import deepscratch.learning.losses as losses
+import deepscratch.learning.metrics as ds_metrics
+import deepscratch.models.optimizers as optimizers
+
 
 class Trainer(object):
-    def __init__(self, model, loss, optimizer, metrics=[], print_step_mod=1000, verbose=True):
+    def __init__(self, model, loss, metrics=[], print_step_mod=1000, verbose=True):
         self.model = model
-        self.model.compile(optimizer)
+        self.model.initialize()
 
-        self.loss = loss
-        self.metrics = metrics
+        self.loss = losses.load(loss) if type(loss) is str else loss
+        self.metrics = self._define_metrics(metrics)
 
         self.train_step = 0
         self.eval_steps = []
@@ -18,7 +22,14 @@ class Trainer(object):
         
         self.train_losses = []
         self.eval_losses = []
-        
+    
+
+    def _define_metrics(self, metrics):
+        new_metrics = []
+        for metric in metrics:
+            new_metrics.append(ds_metrics.load(metric) if type(metric) is str else metric)
+        return new_metrics
+
 
     def batch_train(self, batch_x, batch_y):
         self.train_step += 1
@@ -44,23 +55,25 @@ class Trainer(object):
 
 
     def train(self, data_x, data_y, epochs=1):
-        for epoch in epochs:
+        for epoch in range(1, epochs + 1):
             for batch_x, batch_y in self.batches(data_x, data_y, 16):
                 self.batch_train(batch_x, batch_y)
 
-    def eval(self, batch_x, batch_y, metrics=None):
+    def eval(self, data_x, data_y, metrics=None):
         # run feed forward network
-        pred_y = self.model.run_batch(batch_x)
+        pred_y = self.model.forward(data_x)
+        
         # loss
-        loss = self.loss(pred_y, batch_y)
+        loss = self.loss(pred_y, data_y)
         self.eval_losses.append(loss)
         
         # metrics
         if metrics is None:
             metrics = self.metrics
         res_metrics = []
-        for m in metrics:
-            res_metrics.append(m(pred_y, batch_y))
+        
+        for metric in metrics:
+            res_metrics.append(metric(pred_y, data_y))
         
         self.eval_steps.append(self.train_step)    
         return loss, res_metrics
