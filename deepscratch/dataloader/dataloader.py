@@ -8,5 +8,8 @@ class DataLoader(object):
         self.x = np.random.rand(10)
         self.y = np.random.rand(10)
     
-    def load(self):
-        return train_test_split(self.x, self.y)
+    def load(self, split=True):
+        if split:
+            return train_test_split(self.x, self.y)
+        else:
+            return self.x, self.y

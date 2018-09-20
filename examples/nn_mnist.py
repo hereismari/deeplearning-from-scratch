@@ -8,8 +8,12 @@ def main():
     # data
     train_x, test_x, train_y, test_y = dataloader.load('mnist')
     # net
-    nn = NeuralNetwork(layers=[layers.Dense(10, input_shape=784)])
-    trainer = Trainer(nn)
+    nn = NeuralNetwork(layers=[layers.Dense(10, input_shape=(784, ))])
+    
+    trainer = Trainer(nn, loss='cross-entropy')
+
+    trainer.train(train_x, train_y, epochs=10)
+
 
 if __name__ == "__main__":
     main()

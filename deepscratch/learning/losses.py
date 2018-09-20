@@ -42,6 +42,7 @@ class CrossEntropy(object):
 
 losses = {
     'squared-loss': SquaredLoss,
+    'mean-square': SquaredLoss,
     'cross-entropy': CrossEntropy
 }
 

@@ -7,12 +7,13 @@ import deepscratch.models.optimizers as optimizers
 
 
 class Trainer(object):
-    def __init__(self, model, loss, metrics=[], print_step_mod=1000, verbose=True):
+    def __init__(self, model, loss, metrics=[], print_step_mod=1000, verbose=True, batch_size=16):
         self.model = model
         self.model.initialize()
 
         self.loss = losses.load(loss) if type(loss) is str else loss
         self.metrics = self._define_metrics(metrics)
+        self.batch_size = batch_size
 
         self.train_step = 0
         self.eval_steps = []
@@ -34,7 +35,7 @@ class Trainer(object):
     def batch_train(self, batch_x, batch_y):
         self.train_step += 1
         # run feed forward network
-        pred_y = self.model.forward(batch_x)
+        pred_y = self.predict(batch_x)
         # save loss
         self.train_losses.append(self.loss(pred_y, batch_y))
         # run backpropagation
@@ -43,25 +44,32 @@ class Trainer(object):
             print('Loss: %.4f for step %d' % (self.train_losses[-1], self.train_step))
     
 
-    def batches(self, x, y, batch_size=True):
+    def batches(self, x, y, batch_size):
         idx = np.random.permutation(len(x))
         x = x[idx]
         y = y[idx]
-        
+
         for i in range(0, len(x)-batch_size-1, batch_size):
             batch_x = x[i:i+batch_size]
             batch_y = y[i:i+batch_size]
             yield batch_x, batch_y
 
 
-    def train(self, data_x, data_y, epochs=1):
+    def train(self, data_x, data_y, epochs=1, batch_size=None):
+        if batch_size is None:
+            batch_size = self.batch_size
+
         for epoch in range(1, epochs + 1):
-            for batch_x, batch_y in self.batches(data_x, data_y, 16):
-                self.batch_train(batch_x, batch_y)
+            if batch_size == -1:
+                self.batch_train(data_x, data_y)
+            else:
+                for batch_x, batch_y in self.batches(data_x, data_y, batch_size):
+                    self.batch_train(batch_x, batch_y)
+
 
     def eval(self, data_x, data_y, metrics=None):
         # run feed forward network
-        pred_y = self.model.forward(data_x)
+        pred_y = self.predict(data_x)
         
         # loss
         loss = self.loss(pred_y, data_y)
@@ -77,6 +85,9 @@ class Trainer(object):
         
         self.eval_steps.append(self.train_step)    
         return loss, res_metrics
+    
+    def predict(self, data_x):
+        return self.model.forward(data_x)
 
     
     def plot_losses(self):
