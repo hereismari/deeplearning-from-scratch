@@ -10,7 +10,7 @@ class Metric(object):
 
 class Accuracy(Metric):
     def __call__(self, pred=None, real=None, **kwargs):
-        return np.sum(np.argmax(pred, axis=1) == real) / len(pred)
+        return np.sum(np.argmax(pred, axis=1) == np.argmax(real, axis=1)) / len(pred)
 
 
 

@@ -33,6 +33,9 @@ class Activation(Layer):
     def backward(self, grads):
         return grads * self._activation.grads(self._current_input_data)
     
+    def initialize(self, initializer, otimizer, input_shape, **kwargs):
+        self.input_shape = input_shape
+    
     def output_shape(self):
         return self.input_shape
     

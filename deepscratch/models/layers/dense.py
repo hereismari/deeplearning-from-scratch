@@ -60,6 +60,7 @@ class Dense(Layer):
 
 
     def backward(self, grads):
+        dx = np.dot(grads, self.W.T)
         if self.trainable:
             self._dW = np.dot(self._current_input_data.T, grads)
             self._db = np.sum(grads, axis=0, keepdims=True)
@@ -72,7 +73,7 @@ class Dense(Layer):
             #print('new')
             #print (self.W, self.b)
 
-        return np.dot(grads, self.W.T)
+        return dx
     
     def output_shape(self):
         return (self.n_units,)

@@ -7,6 +7,6 @@ class Sigmoid(Activation):
         exp = np.exp(data)
         return exp / (1 + exp)
 
-    def backward(self, data):
+    def grads(self, data):
         sigmoid = self.__call__(data)
         return sigmoid * (1 - sigmoid)

@@ -12,6 +12,6 @@ class MNIST(DataLoader):
     
     def _preprocess_data(self):
         self._one_hot = OneHotEncoder(sparse=False)
-        self.x = self.data.data
+        self.x = (self.data.data / np.max(self.data.data))
         self.orig_y = self.data.target
         self.y = self._one_hot.fit_transform(self.orig_y.reshape(len(self.orig_y), 1))

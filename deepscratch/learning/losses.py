@@ -36,7 +36,7 @@ class CrossEntropy(object):
 
     def grads(self, pred, real):
         pred = self._avoid_div_by_zero(pred)
-        return - (real / pred) + (1 - real) / (1 - pred)
+        return -(real / pred) + (1 - real) / (1 - pred)
 
 
 

@@ -6,6 +6,6 @@ class Relu(Activation):
     def __call__(self, data):
         return np.maximum(0, data)
     
-    def backward(self, data):
+    def grads(self, data):
         relu = self.__call__(data)
         return (relu > 0) * 1.0

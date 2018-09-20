@@ -7,6 +7,6 @@ class Softmax(Activation):
         exp = np.exp(data - np.max(data, axis=-1, keepdims=True))
         return exp / np.sum(exp, axis=-1, keepdims=True)
     
-    def backward(self, data):
+    def grads(self, data):
         softmax = self.__call__(data)
         return softmax * (1 - softmax)
