@@ -1,5 +1,0 @@
-matplotlib
-numpy
-pandas
-scikit-learn
-sos-essentials
