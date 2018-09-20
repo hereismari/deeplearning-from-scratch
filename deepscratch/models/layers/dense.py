@@ -43,15 +43,19 @@ class Dense(Layer):
         self.W = self.initializer.init((self.input_shape[0], self.n_units))
         self.b = self.initializer.init((1, self.n_units))
 
-        self.W_opt = copy.copy(optimizer)
-        self.b_opt = copy.copy(optimizer)
+        self.W_opt = optimizer(shape=self.W.shape, **kwargs)
+        self.b_opt = optimizer(shape=self.b.shape, **kwargs)
 
 
     def forward(self, data):
+        #print ('weight, bias')
+        #print(self.W, self.b)
         if self.W is None or self.b is None:
             raise Exception('Layer must be initialized')
         self._current_input_data = data
+        #print ('input data:', data)
         self._current_ouput_data = np.dot(data, self.W) + self.b 
+        #print ('output data:', self._current_ouput_data)
         return self._current_ouput_data
 
 
@@ -59,8 +63,14 @@ class Dense(Layer):
         if self.trainable:
             self._dW = np.dot(self._current_input_data.T, grads)
             self._db = np.sum(grads, axis=0, keepdims=True)
+
+            #print('gradients:', self._dW, self._db)
+
             self.W = self.W_opt(self.W, self._dW)
             self.b = self.b_opt(self.b, self._db)
+
+            #print('new')
+            #print (self.W, self.b)
 
         return np.dot(grads, self.W.T)
     

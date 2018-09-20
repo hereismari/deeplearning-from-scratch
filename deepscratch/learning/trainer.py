@@ -85,7 +85,8 @@ class Trainer(object):
         
         self.eval_steps.append(self.train_step)    
         return loss, res_metrics
-    
+
+
     def predict(self, data_x):
         return self.model.forward(data_x)
 

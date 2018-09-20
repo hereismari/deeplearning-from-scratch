@@ -11,17 +11,17 @@ from deepscratch.models.layers.activations.softmax import Softmax
 
 class Activation(Layer):
     _activations = {
-        'relu': Relu,
-        'sigmoid': Sigmoid,
-        'tanh': Tanh,
-        'linear': Linear,
-        'softmax': Softmax
+        'relu': Relu(),
+        'sigmoid': Sigmoid(),
+        'tanh': Tanh(),
+        'linear': Linear(),
+        'softmax': Softmax()
     }
     
     def __init__(self, name):
         if name not in self._activations:
             raise ValueError('Activation unknown %s' % name)
-        self._activation = self._activations[name]()
+        self._activation = self._activations[name]
         
     def __call__(self, data):
         return self.forward(data)

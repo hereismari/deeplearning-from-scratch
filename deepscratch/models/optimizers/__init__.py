@@ -11,4 +11,4 @@ def load(optimizer, **kwargs):
     if optimizer not in optimizers:
         raise ValueError('Optimizer unknown %s' % optimizer)
     else:
-        return optimizers[optimizer](**kwargs)
+        return optimizers[optimizer]

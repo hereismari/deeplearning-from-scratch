@@ -2,7 +2,7 @@
 
 class SGD(object):
 
-    def __init__(self, lr=0.001):
+    def __init__(self, lr=0.001, **kwargs):
         self.lr = lr
     
     def __call__(self, data, grads):
@@ -10,4 +10,4 @@ class SGD(object):
     
     def optimize(self, data, grads):
         assert grads.shape == data.shape, (grads.shape, data.shape)
-        return data -1 * self.lr * grads
+        return data - (self.lr * grads)
