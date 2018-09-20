@@ -1,12 +1,30 @@
-# Deep Learning from Scratch :computer::thinking::snake:
+# Deep Learning from Scratch :computer::thinking::snake::brazil:
 
-A repository with neural networks and deep learning related concepts fully implemented in Python 3 using only numpy. The code here available was developed only for learning and teaching purposes.
+Repositório com código para o tutorial Aprendendo Deep Learning. Este repositório contém conceitos relacionados com machine learning e deep learning implementados em Jupyter notebooks utilizando Python3. O código é feito para facilitar o ensino e aprendizado. Todos os comentários e instrunções estão em português.
 
-Feel free to use this for any project or work using the Apache 2.0 LICENSE.
+Contribuições são muito bem vindas!
 
----
+## Rodando localmente
 
-Notebooks e detalhes sobre site em português disponíveis [na branch web-site](https://github.com/mari-linhares/deep-python-scratch/tree/web-site).
+Você pode rodar os notebooks separadamente na maneira convencional de um jupyter notebook:
+
+1. Instale as dependências necessárias: `pip install -r requirements.txt`
+2. Instale jupyter notebook
+3. execute: `jupyter notebook`
+
+Ou ainda servir este site localmente da seguinte forma:
+
+```bash
+./release.sos clean
+./release.sos -s force
+```
+
+As novas páginas serão geradas e podem ser acessadas em `docs/index.html`.
+
+----
+
+A repository with neural networks and deep learning related concepts fully implemented in Jupyter notebooks using a Python 3 kernel. The code here available was developed only for learning and teaching purposes. But is not in the best shape and structure for real use. Also, all comments and instructions are in Portuguese mainly because there's already a lot of good content in English.
+
 
 ## Créditos do template utilizado no site
 
