@@ -127,7 +127,6 @@ class Trainer(object):
         return loss, res_metrics
 
 
-
     def predict(self, data_x):
         return self.model.forward(data_x)
 
