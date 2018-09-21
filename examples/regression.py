@@ -12,7 +12,6 @@ def main():
     # Generating fake data: 7 * X + 15
     SYNT_TRAIN_SIZE = 200
     train_x = np.random.rand(SYNT_TRAIN_SIZE)
-    np.random.normal()
     train_y = np.reshape(7 * train_x + 15 + np.random.normal(0, 0.8, size=SYNT_TRAIN_SIZE), (SYNT_TRAIN_SIZE, 1))
     train_x = np.reshape(train_x, (SYNT_TRAIN_SIZE, 1))
     

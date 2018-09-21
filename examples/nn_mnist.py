@@ -13,9 +13,11 @@ def main():
         layers=[
             layers.Dense(512, input_shape=(784, )),
             layers.Activation('relu'),
+            layers.Dense(256),
+            layers.Activation('relu'),
             layers.Dense(10),
             layers.Activation('softmax')
-        ])
+        ], optimizer='rmsprop', initializer='he-et-al')
     
     trainer = Trainer(nn, loss='cross-entropy', metrics=['accuracy'])
 
