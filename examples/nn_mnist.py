@@ -12,16 +12,16 @@ def main():
     nn = NeuralNetwork(
         layers=[
             layers.Dense(512, input_shape=(784, )),
-            layers.Activation('relu'),
+            layers.Activation('tanh'),
             layers.Dense(256),
-            layers.Activation('relu'),
+            layers.Activation('tanh'),
             layers.Dense(10),
             layers.Activation('softmax')
         ], optimizer='rmsprop', initializer='he-et-al')
     
     trainer = Trainer(nn, loss='cross-entropy', metrics=['accuracy'])
 
-    trainer.train(train_x, train_y, epochs=10, test_size=0.25)
+    trainer.train(train_x, train_y, epochs=10, test_size=0.1)
     print(trainer.eval(test_x, test_y))
 
 

@@ -33,14 +33,16 @@ class Trainer(object):
         return new_metrics
 
 
-    def batch_train(self, batch_x, batch_y):
+    def batch_train(self, batch_x, batch_y, **kwargs):
         self.train_step += 1
         # run feed forward network
         pred_y = self.predict(batch_x)
         # save loss
         self.train_losses.append(self.loss(pred_y, batch_y))
+        
         # run backpropagation
-        self.model.backward(self.loss.grads(pred_y, batch_y))
+        self.model.backward(self.loss.grads(pred_y, batch_y), **kwargs)
+        
         if self.verbose and (self.train_step - 1) % self.print_step_mod == 0:
             print('Loss: %.4f for step %d' % (self.train_losses[-1], self.train_step))
     

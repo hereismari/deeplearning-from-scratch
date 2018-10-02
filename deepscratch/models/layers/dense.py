@@ -59,21 +59,24 @@ class Dense(Layer):
         return self._current_ouput_data
 
 
-    def backward(self, grads):
+    def backward(self, grads, update=True, **kwargs):
         dx = np.dot(grads, self.W.T)
         if self.trainable:
             self._dW = np.dot(self._current_input_data.T, grads)
             self._db = np.sum(grads, axis=0, keepdims=True)
 
-            #print('gradients:', self._dW, self._db)
-
-            self.W = self.W_opt(self.W, self._dW)
-            self.b = self.b_opt(self.b, self._db)
-
-            #print('new')
-            #print (self.W, self.b)
+            if update:
+                self.W = self.W_opt(self.W, self._dW)
+                self.b = self.b_opt(self.b, self._db)
 
         return dx
     
     def output_shape(self):
         return (self.n_units,)
+    
+
+    def params(self):
+        return [self.W, self.b]
+    
+    def dparams(self):
+        return [self._dW, self._db]

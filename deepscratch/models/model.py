@@ -3,10 +3,10 @@ class Model(object):
         self.optimizer = None
     
     def initialize(self, **kwargs):
-        pass
+        raise NotImplementedError()
     
     def forward(self, data):
-        return data
+        raise NotImplementedError()
     
-    def backward(self):
-        pass
+    def backward(self, grads, **kwargs):
+        raise NotImplementedError()
