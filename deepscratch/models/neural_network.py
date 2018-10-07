@@ -45,6 +45,6 @@ class NeuralNetwork(Model):
 
     
     def backward(self, grads, **kwargs):
-        for layer in self.layers[::-1]:
+        for layer in reversed(self.layers):
             grads = layer.backward(grads, **kwargs)
         return grads

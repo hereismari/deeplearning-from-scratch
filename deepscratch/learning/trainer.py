@@ -38,13 +38,14 @@ class Trainer(object):
         # run feed forward network
         pred_y = self.predict(batch_x)
         # save loss
-        self.train_losses.append(self.loss(pred_y, batch_y))
+        loss = np.mean(self.loss(pred_y, batch_y))
+        self.train_losses.append(loss)
         
         # run backpropagation
         self.model.backward(self.loss.grads(pred_y, batch_y), **kwargs)
         
         if self.verbose and (self.train_step - 1) % self.print_step_mod == 0:
-            print('Loss: %.4f for step %d' % (self.train_losses[-1], self.train_step))
+            print('Loss: %.4f for step %d' % (loss, self.train_step))
     
 
     def batches(self, x, y, batch_size):
@@ -119,7 +120,7 @@ class Trainer(object):
         pred_y = self.predict(data_x)
         
         # loss
-        loss = self.loss(pred_y, data_y)
+        loss = np.mean(self.loss(pred_y, data_y))
         self.eval_losses.append(loss)
 
         res_metrics = []

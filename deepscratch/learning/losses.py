@@ -17,10 +17,10 @@ class SquaredLoss(object):
         pass
 
     def __call__(self, pred, real):
-        return (1.0/2) * (1.0/len(pred)) * np.sum(np.power(real - pred, 2))
+        return 0.5 * np.power(real - pred, 2)
     
     def grads(self, pred, real):
-        return -1 * (1.0/len(pred)) * (real - pred)
+        return -1 * (real - pred) * (1.0/len(pred))
 
 
 class CrossEntropy(object):
@@ -32,12 +32,11 @@ class CrossEntropy(object):
 
     def __call__(self, pred, real):
         pred = self._avoid_div_by_zero(pred)
-        return np.sum(-real * np.log(pred) - (1 - real) * np.log(1 - pred))
+        return -real * np.log(pred) - (1 - real) * np.log(1 - pred)
 
     def grads(self, pred, real):
         pred = self._avoid_div_by_zero(pred)
-        return -(real / pred) + (1 - real) / (1 - pred)
-
+        return (-(real / pred) + (1 - real) / (1 - pred)) * (1.0/len(pred))
 
 
 losses = {

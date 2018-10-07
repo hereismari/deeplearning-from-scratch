@@ -12,9 +12,9 @@ def main():
     nn = NeuralNetwork(
         layers=[
             layers.Dense(512, input_shape=(784, )),
-            layers.Activation('tanh'),
+            layers.Activation('relu'),
             layers.Dense(256),
-            layers.Activation('tanh'),
+            layers.Activation('relu'),
             layers.Dense(10),
             layers.Activation('softmax')
         ], optimizer='rmsprop', initializer='he-et-al')

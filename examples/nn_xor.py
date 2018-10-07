@@ -11,11 +11,11 @@ def main():
     # Network implementation
     nn = NeuralNetwork(
         layers=[
-            layers.Dense(10, input_shape=(2,)),
-            layers.Activation('relu'),
+            layers.Dense(4, input_shape=(2,)),
+            layers.Activation('tanh'),
             layers.Dense(1)
         ],
-        optimizer='rmsprop'
+        optimizer='rmsprop',
     )
     
     # Training

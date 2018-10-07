@@ -6,4 +6,4 @@ class HeEtAl(object):
     @staticmethod
     def init(shape, **kwargs):
         '''He-et-al initialization'''
-        return np.random.randn(*shape) * np.sqrt(2/shape[0])
+        return np.random.randn(*shape) * np.sqrt(2.0/shape[0])

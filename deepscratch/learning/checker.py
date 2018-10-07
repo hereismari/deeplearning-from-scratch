@@ -17,7 +17,7 @@ class GradientChecker(object):
         # run feed forward network
         pred_y = self.trainer.predict(batch_x)
         # run backpropagation
-        self.model.backward(self.trainer.loss.grads(pred_y, batch_y), update_weights=False)
+        self.model.backward(self.trainer.loss.grads(pred_y, batch_y), update=False)
 
 
     def loss(self, batch_x, batch_y):
@@ -36,26 +36,42 @@ class GradientChecker(object):
                 self.check_layer(batch_x, batch_y, i, delta=delta)
     
 
-    def check_layer(self, batch_x, batch_y, layer_indx, delta=1e-5, error_limit=1e-6):
+    def sign(self, x):
+        return x >= 0
+
+
+    def check_layer(self, batch_x, batch_y, layer_indx, delta=1e-5, error_limit=1e-4):
         layer = self.model.layers[layer_indx]
 
-        for i, (param, dparam) in enumerate(zip(layer.params(), layer.dparams())):
+        for param, dparam in zip(layer.params(), layer.dparams()):
             assert param.shape == dparam.shape, 'Error dims should match: %s and %s' % (param.shape, dparam.shape)
+            
             ri = int(uniform(0, param.size))
 
             # evaluate cost at [x + delta] and [x - delta]
             old_val = param.flat[ri]
-            self.model.layers[layer_indx].params()[i].flat[ri] = old_val + delta
-            cg0 = self.loss(batch_x, batch_y)
-            self.model.layers[layer_indx].params()[i].flat[ri] = old_val - delta
-            cg1 = self.loss(batch_x, batch_y)
+            
+            param.flat[ri] = old_val + delta
+            cg0 = np.mean(self.loss(batch_x, batch_y))
+    
+            param.flat[ri] = old_val - delta
+            cg1 = np.mean(self.loss(batch_x, batch_y))
+
+            if self.sign(old_val + delta) != self.sign(old_val - delta):
+                continue
 
             # reset old value for this parameter
-            self.model.layers[layer_indx].params()[i].flat[ri] = old_val
+            param.flat[ri] = old_val
             
             # fetch both numerical and analytic gradient
             grad_analytic = dparam.flat[ri]
             grad_numerical = (cg0 - cg1) / (2 * delta)
-            
-            rel_error = abs(grad_analytic - grad_numerical) / abs(grad_numerical + grad_analytic)
-            print (rel_error <= error_limit, '%f, %f => %e ' % (grad_numerical, grad_analytic, rel_error))
+
+            numerator = abs(grad_analytic - grad_numerical) 
+            denominator = abs(grad_numerical + grad_analytic)
+            if denominator > error_limit and numerator > error_limit:
+                rel_error = numerator / denominator 
+            else:
+                rel_error = 0
+
+            assert rel_error <= error_limit, 'Gradient checking failed at layer %d: (analytic gradient = %.8f, numerical gradient %.8f, error = %e ' % (layer_indx, grad_analytic, grad_numerical, rel_error)

@@ -1,8 +1,6 @@
 import numpy as np
 
 from deepscratch.dataloader.dataloader import DataLoader
-from sklearn.datasets.mldata import fetch_mldata
-from sklearn.preprocessing import OneHotEncoder
 
 
 class XOR(DataLoader):

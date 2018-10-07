@@ -3,7 +3,7 @@ import numpy as np
 from deepscratch.models.layers.layer import Layer
 
 from deepscratch.models.layers.activations.activation import Activation as Linear
-from deepscratch.models.layers.activations.relu import Relu
+from deepscratch.models.layers.activations.relu import Relu, Selu, Elu, LeakyRelu
 from deepscratch.models.layers.activations.sigmoid import Sigmoid
 from deepscratch.models.layers.activations.tanh import Tanh
 from deepscratch.models.layers.activations.softmax import Softmax
@@ -12,6 +12,9 @@ from deepscratch.models.layers.activations.softmax import Softmax
 class Activation(Layer):
     _activations = {
         'relu': Relu,
+        'selu': Selu,
+        'elu': Elu,
+        'leaky-relu': LeakyRelu,
         'sigmoid': Sigmoid,
         'tanh': Tanh,
         'linear': Linear,

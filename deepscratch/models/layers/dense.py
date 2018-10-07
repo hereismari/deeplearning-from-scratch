@@ -52,11 +52,9 @@ class Dense(Layer):
         #print(self.W, self.b)
         if self.W is None or self.b is None:
             raise Exception('Layer must be initialized')
+        
         self._current_input_data = data
-        #print ('input data:', data)
-        self._current_ouput_data = np.dot(data, self.W) + self.b 
-        #print ('output data:', self._current_ouput_data)
-        return self._current_ouput_data
+        return np.dot(data, self.W) + self.b
 
 
     def backward(self, grads, update=True, **kwargs):
@@ -70,13 +68,15 @@ class Dense(Layer):
                 self.b = self.b_opt(self.b, self._db)
 
         return dx
-    
+
+
     def output_shape(self):
         return (self.n_units,)
     
 
     def params(self):
         return [self.W, self.b]
-    
+
+
     def dparams(self):
         return [self._dW, self._db]
